@@ -1,5 +1,5 @@
 ---
 layout: layout.njk
-title: Hello, World!
+title: Tensei Cho
 ---
 # Hello, World!
