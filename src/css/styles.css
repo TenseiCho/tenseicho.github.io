@@ -10,32 +10,33 @@ body {
 
 
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     background-color: #222;
-    padding: 20px;
-  }
-  
-  .logo img {
-    height: 50px;
+    padding: 10px;
   }
   
   nav ul {
-    display: flex;
     list-style-type: none;
     margin: 0;
     padding: 0;
+    display: flex; /* Add this line */
   }
   
   nav ul li {
-    margin-left: 20px;
+    margin-right: 10px; /* Adjust the margin as needed */
   }
   
   nav ul li a {
-    color: #fff;
     text-decoration: none;
+    color: #fff;
+    padding: 5px 10px; /* Add padding for better spacing */
+  }
+  
+  nav ul li a.active {
     font-weight: bold;
+  }
+
+  .logo img {
+    height: 50px;
   }
   
   .social-icons a {
