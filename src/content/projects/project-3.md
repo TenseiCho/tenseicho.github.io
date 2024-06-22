@@ -1,6 +1,6 @@
 ---
-title: 'Project 3'
-description: 'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci'
+title: 'WEBP-PNG'
+description: 'Python file with GUI for converting a folder of WebP images to PNG.'
 image:
     url: '/GitHub.webp'
     alt: 'GitHub wallpaper'
@@ -11,9 +11,8 @@ worksImage2:
     url: '/image-2.webp'
     alt: 'second image of your project.'
 platform: Web
-stack: Astro, JavaScript
-website: https://astro-milky-way.netlify.app/
-github: https://github.com/ttomczak3/Milky-Way
+stack: Python
+github: https://github.com/TenseiCho/webp-png
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras faucibus a tortor at molestie. Sed pellentesque leo auctor, auctor lorem nec, venenatis risus. Vivamus commodo ipsum vitae orci finibus, vel porta nunc viverra. In hac habitasse platea dictumst. Nunc pretium, ligula ultricies consequat sollicitudin, enim ex ullamcorper nisl.

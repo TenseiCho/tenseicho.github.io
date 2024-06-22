@@ -19,7 +19,6 @@ const projectsCollection = defineCollection({
       }),
       platform: z.string(),
       stack: z.string(),
-      website: z.string(),
       github: z.string(),
     })
 });
