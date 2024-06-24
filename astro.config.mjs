@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 export default defineConfig({
-  site: 'https://tenseicho.github.io',
+  site: 'https://tenseicho.xyz/',
   base: '/',
   outDir: './dist',
 });
