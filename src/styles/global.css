@@ -53,6 +53,16 @@ small, li {
     font-family: var(--body); 
 }
 
+.blog-post a {
+    color: var(--text-link);
+    text-decoration: none;
+}
+
+.blog-post a:hover {
+    text-decoration: underline;
+}
+
+
 /* Navigation Bar */
 .navbar {
     display: grid;

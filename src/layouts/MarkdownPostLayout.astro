@@ -1,0 +1,15 @@
+---
+import Layout from './Layout.astro';
+const { frontmatter } = Astro.props;
+---
+<Layout pageTitle={frontmatter.title}>
+    <h1>{frontmatter.title}</h1>
+    <p>Published on: {new Date(frontmatter.pubDate).toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        timeZone: 'America/New_York'
+    })}</p>
+
+    <slot />
+</Layout>
