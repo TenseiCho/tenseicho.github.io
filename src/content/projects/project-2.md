@@ -2,7 +2,7 @@
 title: 'Steve the Discord Bot'
 description: 'My second try at a Discord bot '
 image:
-    url: '/GitHub.webp'
+    url: '/project-images/andrew-discord.png'
     alt: 'GitHub wallpaper'
 worksImage1:
     url: '/image-1.webp'

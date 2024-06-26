@@ -2,7 +2,7 @@
 title: 'r/a/dio Firefox Extension'
 description: 'Firefox extension that plays r/a/dio station. '
 image:
-    url: '/GitHub.webp'
+    url: '/project-images/radio-firefox.png'
     alt: 'GitHub wallpaper'
 worksImage1:
     url: '/image-1.webp'

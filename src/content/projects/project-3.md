@@ -2,7 +2,7 @@
 title: 'WEBP-PNG Converter'
 description: 'A WEBP-PNG Converter '
 image:
-    url: '/GitHub.webp'
+    url: '/project-images/webp-png.png'
     alt: 'GitHub wallpaper'
 worksImage1:
     url: '/image-1.webp'
