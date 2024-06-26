@@ -6,17 +6,24 @@ const allProjects = await getCollection("projects");
 const pageTitle = "Projects";
 ---
 <Layout pageTitle={pageTitle}>
-    <div class="gif">
-        <img width="300" height="259" alt="RaccoonLaptopGif" src="/laptop.webp"/>
-    </div>
     <h2>Projects</h2>
     <ul role="list" class="link-card-grid">
-        {allProjects.map((card) => <Card 
-            url={`/projects/${card.slug}/`} 
-            image={card.data.image.url} 
-            title={card.data.title} 
-            body={card.data.description}
-        />)}
+        {allProjects.map((project) => (
+            <Card 
+                url={`/projects/${project.slug}/`} 
+                image={project.data.image.url} 
+                title={project.data.title} 
+                body={project.data.description}
+            />
+        ))}
     </ul>
 </Layout>
 
+<style>
+    .link-card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+        gap: 1rem;
+        padding: 0;
+    }
+</style>
