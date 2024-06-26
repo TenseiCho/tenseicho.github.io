@@ -1,5 +1,5 @@
 ---
-title: 'Steve the Discord Bot'
+title: 'Andrew the Discord Bot'
 description: 'My second try at a Discord bot '
 image:
     url: '/project-images/andrew-discord.png'
