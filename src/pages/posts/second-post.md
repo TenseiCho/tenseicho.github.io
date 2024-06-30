@@ -3,6 +3,7 @@ layout: ../../layouts/MarkdownPostLayout.astro
 title: 'July Roadmap'
 pubDate: 2024-06-30
 description: 'Roadmap for the month of July'
+slug: 'july-roadmap'
 ---
 
 # My Roadmap for July

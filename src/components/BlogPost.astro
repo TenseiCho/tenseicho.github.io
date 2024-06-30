@@ -3,9 +3,10 @@ interface Props {
     url: string;
     title: string;
     pubDate: string;
+    slug: string;
 }
 
-const { url, title, pubDate } = Astro.props;
+const { url, title, pubDate, slug } = Astro.props;
 ---
 <li class="blog-post">
     <div class="blog-post__content">

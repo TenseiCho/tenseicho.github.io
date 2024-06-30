@@ -3,6 +3,7 @@ layout: ../../layouts/MarkdownPostLayout.astro
 title: 'How to Fix your Life'
 pubDate: 2024-06-26
 description: 'Tensei means Transformation & Cho means Butterfly in Japanese'
+slug: 'how-to-fix-your-life'
 ---
 ## 3 "Easy" Steps
 
