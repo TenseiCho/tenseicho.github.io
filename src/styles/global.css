@@ -386,3 +386,21 @@ html.light {
     }
 }
 
+/* Blog Image */
+.blog-image-container {
+    width: 500px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.blog-image {
+    width: 100%;
+    height: auto;
+}
+
+.blog-image-container figcaption {
+    font-size: 0.8rem;
+    color: #666;
+    text-align: center;
+    margin-top: 0.5rem;
+}
