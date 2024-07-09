@@ -1,6 +1,7 @@
 ---
 title: 'Andrew the Discord Bot'
 description: 'My second try at a Discord bot '
+pubDate: 2024-06-10
 image:
     url: '/project-images/andrew-discord.png'
     alt: 'GitHub wallpaper'

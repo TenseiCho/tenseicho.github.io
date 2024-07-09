@@ -2,13 +2,17 @@
 import { getCollection } from "astro:content";
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+
 const allProjects = await getCollection("projects");
+const sortedProjects = allProjects.sort((a, b) => 
+  new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+);
 const pageTitle = "Projects";
 ---
 <Layout pageTitle={pageTitle}>
     <h2>Projects</h2>
     <ul role="list" class="link-card-grid">
-        {allProjects.map((project) => (
+        {sortedProjects.map((project) => (
             <Card 
                 url={`/projects/${project.slug}/`} 
                 image={project.data.image.url} 
