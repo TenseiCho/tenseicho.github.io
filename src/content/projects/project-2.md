@@ -16,4 +16,3 @@ stack: JavaScript, NodeJS, FFMPEG
 github: https://github.com/TenseiCho/andrew-discordbot
 ---
 
-Test description

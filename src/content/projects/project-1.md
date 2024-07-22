@@ -15,5 +15,3 @@ platform: Web Extension
 stack: JavaScript, HTML, CSS
 github: https://github.com/TenseiCho/r-a-dio-extension
 ---
-
-Test description    

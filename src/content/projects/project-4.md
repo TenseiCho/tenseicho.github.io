@@ -11,9 +11,8 @@ worksImage1:
 worksImage2:
     url: '/image-2.webp'
     alt: 'second image of your project.'
-platform: Desktop Application
+platform: Android Application
 stack: Flutter, Dart
 github: https://github.com/TenseiCho/r-a-dio-app
 ---
 
-Test description
