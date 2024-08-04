@@ -30,4 +30,7 @@ const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.pubDate).valu
         list-style-type: none;
         padding: 0;
     }
+    .blog-list > :global(li) {
+        margin-bottom: 0.5rem; /* Adjust this value to control spacing between posts */
+    }
 </style>
