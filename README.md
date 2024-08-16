@@ -1,40 +1,33 @@
-# Astro Starter Kit: Basics
+# TenseiCho's Personal Website
 
-```sh
-npm create astro@latest -- --template basics
-```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+This is the repository for my personal website, built with Astro. It showcases my projects, blog posts, and provides information about me as a software engineer, 3D artist, and YouTuber.
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+Inside of this project, you'll see the following folders and files:
 
 ```text
 /
 ├── public/
-│   └── favicon.svg
+│   └── (static assets like images and icons)
 ├── src/
 │   ├── components/
-│   │   └── Card.astro
+│   ├── content/
+│   │   └── projects/
 │   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
+│   ├── pages/
+│   │   └── posts/
+│   └── styles/
+├── astro.config.mjs
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
+- `public/`: Contains static assets that are served as-is.
+- `src/components/`: Reusable Astro components.
+- `src/content/projects/`: Markdown files for project descriptions.
+- `src/layouts/`: Layout components for structuring pages.
+- `src/pages/`: Astro pages and blog post markdown files.
+- `src/styles/`: Global CSS styles.
 
 ## 🧞 Commands
 
@@ -47,8 +40,19 @@ All commands are run from the root of the project, from a terminal:
 | `npm run build`           | Build your production site to `./dist/`          |
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+## 👀 Features
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Responsive design
+- Dark/Light mode toggle
+- Project showcase
+- Blog with Markdown support
+- "Like" functionality for blog posts
+
+## 🚀 Deployment
+
+This site is automatically deployed to GitHub Pages using GitHub Actions. Any push to the `main` branch will trigger a new build and deployment.
+
+## 📝 License
+
+This project is open source and available under the [MIT License](LICENSE).
