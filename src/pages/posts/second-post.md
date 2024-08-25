@@ -10,7 +10,7 @@ slug: 'july-roadmap'
 
 Hey everyone! I've got some big plans for July, and I'm excited to share them with you. My focus is going to be on three main areas: Projects, Networking, and Fun. Let's dive in!
 
-## Projects: Pushing My Boundaries
+## Projects
 
 I've been on a roll lately with projects like the r/a/dio Firefox extension, Andrew the Discord Bot, WEBP-PNG converter, and my portfolio website. But I'm not stopping there. July is going to be all about pushing myself further. Here's what I've got lined up:
 

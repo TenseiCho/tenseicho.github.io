@@ -7,8 +7,8 @@
     --text-light: #1e1e2e; 
     --text-link: #78c2ad;
     --underline: #375a7f;
-    --header: 'Pacifico', cursive;
-    --body: 'Josefin Sans', sans-serif; 
+    --header: 'Montserrat', sans-serif;
+    --body: 'Montserrat', sans-serif; 
 }
 
 html {
@@ -79,6 +79,8 @@ small, li {
     font-family: var(--body);
     font-size: 1.1rem;
     text-align: right;
+    display: flex; /* Added to align items horizontally */
+    align-items: center; /* Center items vertically */
 }
 
 .navbar__title > a, .navbar__menu > a {
@@ -88,6 +90,10 @@ small, li {
 
 .navbar__menu > a {
     margin: 0 10px;
+}
+
+.navbar__menu > a:last-child {
+    margin-right: 0; /* Remove right margin for the last item */
 }
 
 .navbar__title > a:hover, .navbar__menu > a:hover, .navbar__menu > a:focus {
