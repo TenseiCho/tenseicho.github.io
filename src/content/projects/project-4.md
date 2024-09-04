@@ -1,6 +1,6 @@
 ---
 title: 'r/a/dio Android App'
-description: 'Phone app that plays radio station '
+description: 'Anime radio station as an Android app '
 pubDate: 2024-07-22
 image:
     url: '/project-images/radio-app.png'

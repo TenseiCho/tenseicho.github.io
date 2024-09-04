@@ -1,6 +1,6 @@
 ---
 title: 'WEBP-PNG Converter'
-description: 'A WEBP-PNG Converter '
+description: 'Desktop app for converting images from .webp to .png '
 pubDate: 2024-06-25
 image:
     url: '/project-images/webp-png.png'
