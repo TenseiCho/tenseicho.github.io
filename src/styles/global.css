@@ -65,9 +65,15 @@ small, li {
 
 /* Navigation Bar */
 .navbar {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     margin-top: 0.8rem;
+}
+
+.navbar__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 540px;
+    margin: 0 auto;
 }
 
 .navbar__title {
@@ -78,9 +84,8 @@ small, li {
 .navbar__menu {
     font-family: var(--body);
     font-size: 1.1rem;
-    text-align: right;
-    display: flex; /* Added to align items horizontally */
-    align-items: center; /* Center items vertically */
+    display: flex;
+    align-items: center;
 }
 
 .navbar__title > a, .navbar__menu > a {
@@ -93,13 +98,34 @@ small, li {
 }
 
 .navbar__menu > a:last-child {
-    margin-right: 0; /* Remove right margin for the last item */
+    margin-right: 0;
 }
 
 .navbar__title > a:hover, .navbar__menu > a:hover, .navbar__menu > a:focus {
     text-decoration: underline var(--underline);
     text-decoration-thickness: 2px;
     text-underline-offset: 6px;
+}
+
+/* Media Query */
+@media only screen and (max-width: 600px) {
+    .navbar__content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar__title {
+        margin-bottom: 0.5rem;
+    }
+
+    .navbar__menu {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .navbar__menu > a {
+        margin: 0.25rem 0.5rem;
+    }
 }
 
 /* Gifs */
