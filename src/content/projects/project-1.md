@@ -1,6 +1,6 @@
 ---
 title: 'r/a/dio Extension'
-description: 'Anime radio station as a browser extension '
+description: 'Anime radio station as a Firefox extension '
 pubDate: 2024-05-20
 image:
     url: '/project-images/radio-firefox.png'

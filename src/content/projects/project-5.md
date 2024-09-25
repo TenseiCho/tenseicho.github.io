@@ -14,4 +14,5 @@ worksImage2:
 platform: Desktop Application
 stack: Python, Tkinter, pyttsx3
 github: https://github.com/TenseiCho/taro.va
+hidden: true
 ---

@@ -14,5 +14,6 @@ worksImage2:
 platform: Discord
 stack: JavaScript, NodeJS, FFMPEG
 github: https://github.com/TenseiCho/andrew-discordbot
+hidden: true
 ---
 

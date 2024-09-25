@@ -21,6 +21,7 @@ const projectsCollection = defineCollection({
       platform: z.string(),
       stack: z.string(),
       github: z.string(),
+      hidden: z.boolean().optional().default(false), // Add this line
     })
 });
 

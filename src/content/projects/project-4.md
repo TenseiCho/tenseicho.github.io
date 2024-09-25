@@ -1,5 +1,5 @@
 ---
-title: 'r/a/dio Android App'
+title: 'r/a/dio App'
 description: 'Anime radio station as an Android app '
 pubDate: 2024-07-22
 image:

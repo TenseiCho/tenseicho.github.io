@@ -14,5 +14,6 @@ worksImage2:
 platform: Desktop Application
 stack: Python, Tkinter
 github: https://github.com/TenseiCho/webp-png
+hidden: true
 ---
 
