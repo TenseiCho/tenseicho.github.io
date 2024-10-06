@@ -1,0 +1,26 @@
+---
+import BaseLayout from './Layout.astro';
+const { frontmatter } = Astro.props;
+---
+<BaseLayout pageTitle={frontmatter.title}>
+    <h2>{frontmatter.title}</h2>
+    <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="model-image" />
+    <p>{frontmatter.description}</p>
+    <ul>
+        <li><strong>Model Type:</strong> {frontmatter.modelType}</li>
+        <li><strong>Software:</strong> {frontmatter.software}</li>
+        {frontmatter.sketchfabLink && (
+            <li><strong>Sketchfab:</strong> <a href={frontmatter.sketchfabLink} target="_blank">View on Sketchfab</a></li>
+        )}
+    </ul>
+    <slot />
+</BaseLayout>
+
+<style>
+    .model-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+</style>

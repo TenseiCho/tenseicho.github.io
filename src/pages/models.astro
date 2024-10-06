@@ -1,24 +1,34 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from '../layouts/Layout.astro';
----
+import Card from '../components/Card.astro';
 
-<Layout title="Models - Coming Soon">
-    <main class="coming-soon-container">
-        <p class="coming-soon-text">Coming Soon</p>
-    </main>
+const allModels = await getCollection("models");
+const visibleModels = allModels.filter(model => !model.data.hidden);
+const sortedModels = visibleModels.sort((a, b) => 
+  new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+);
+const pageTitle = "3D Models";
+---
+<Layout pageTitle={pageTitle}>
+    <h2 class="center">3D Models</h2>
+    <ul role="list" class="link-card-grid">
+        {sortedModels.map((model) => (
+            <Card 
+                url={`/models/${model.slug}/`} 
+                image={model.data.image.url} 
+                title={model.data.title} 
+                body={model.data.description}
+            />
+        ))}
+    </ul>
 </Layout>
 
 <style>
-    .coming-soon-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
-
-    .coming-soon-text {
-        font-weight: bold;
-        font-size: 2rem;
-        text-align: center;
+    .link-card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+        gap: 1rem;
+        padding: 0;
     }
 </style>
