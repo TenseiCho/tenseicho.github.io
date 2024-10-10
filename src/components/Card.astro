@@ -17,8 +17,8 @@ const { url, image, title, body, isAboveFold = false } = Astro.props;
             <Image 
                 class="card__img" 
                 src={image} 
-                width={226} 
-                height={127} 
+                width={180}  // Reduced from 226
+                height={101}  // Reduced from 127
                 alt={`Image for ${title}`}
                 loading={isAboveFold ? "eager" : "lazy"}
             />
