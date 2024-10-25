@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+const pageTitle = "Videos";
+---
+<Layout pageTitle={pageTitle}>
+    <h2 class="center">Videos</h2>
+    <div class="coming-soon">
+        <p>Coming Soon!</p>
+    </div>
+</Layout>
+
+<style>
+    .coming-soon {
+        text-align: center;
+        padding: 4rem 1rem;
+        font-size: 1.2rem;
+    }
+    .coming-soon a {
+        color: var(--text-link);
+        text-decoration: none;
+    }
+    .coming-soon a:hover {
+        text-decoration: underline;
+    }
+</style>

@@ -42,7 +42,23 @@ const modelsCollection = defineCollection({
     })
 });
 
+const videosCollection = defineCollection({
+    type: 'content',
+    schema: z.object({
+      title: z.string(),
+      description: z.string(),
+      pubDate: z.date(),
+      image: z.object({
+        url: z.string(),
+        alt: z.string()
+      }),
+      youtubeLink: z.string(),
+      hidden: z.boolean().optional().default(false),
+    })
+});
+
 export const collections = {
   projects: projectsCollection,
   models: modelsCollection,
+  videos: videosCollection,  // Add this line
 };
