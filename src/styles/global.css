@@ -297,6 +297,14 @@ footer {
     content: url("/github-mark-white.svg");
 }
 
+.fab-icon {
+    content: url("/sketchfab-mark.svg");
+}
+
+.you-icon {
+    content: url("/youtube-mark.svg");
+}
+
 .mail-icon {
     content: url("/mail-white.svg");
 }
@@ -368,6 +376,14 @@ html.light {
 
 .light .git-icon {
     content: url("/github-mark.svg");
+}
+
+.light .fab-icon {
+    content: url("/sketchfab-mark-white.svg");
+}
+
+.light .you-icon {
+    content: url("/youtube-mark-white.svg");
 }
 
 .light .mail-icon {
