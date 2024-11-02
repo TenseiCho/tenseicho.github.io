@@ -10,4 +10,4 @@ software: 'Blender'
 sketchfabLink: 'https://sketchfab.com/3d-models/donuts-8fede835307642e6a4fd6a3b93952ae8'
 ---
 
-A plate of donuts from the BlenderGuru videos.
+A plate of donuts from the BlenderGuru videos. <br> https://www.youtube.com/playlist?list=PLjEaoINr3zgEPv5y--4MKpciLaoQYZB1Z
