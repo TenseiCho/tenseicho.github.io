@@ -10,4 +10,4 @@ software: 'Blender'
 sketchfabLink: 'https://sketchfab.com/3d-models/butterfly-coaster-8e049923df1d4e06b2c8607170a8cb39'
 ---
 
-Just need something for the time being. Still a Work in Progress.
+I like it!

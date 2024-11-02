@@ -10,4 +10,4 @@ software: 'Blender'
 sketchfabLink: 'https://sketchfab.com/3d-models/low-poly-lady-83f28a037dc340aea67b02b4aa495cf3'
 ---
 
-Followed along this guide. https://www.youtube.com/watch?v=sbCW0Cs7aI8
+Followed along this guide. <br> https://www.youtube.com/watch?v=sbCW0Cs7aI8
