@@ -7,7 +7,7 @@ image:
     alt: 'A slice of Pumpkin Pie on a plate'
 modelType: 'Food'
 software: 'Blender'
-sketchfabLink: 'https://sketchfab.com/3d-models/'
+sketchfabLink: 'https://sketchfab.com/3d-models/pumpkin-pie-9d4ee12f1af846138361ff7e224699e3'
 ---
 
 I love it!
