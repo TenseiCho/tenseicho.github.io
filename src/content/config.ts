@@ -53,6 +53,7 @@ const videosCollection = defineCollection({
         alt: z.string()
       }),
       youtubeLink: z.string(),
+      socialmediaLink: z.string(),
       hidden: z.boolean().optional().default(false),
     })
 });

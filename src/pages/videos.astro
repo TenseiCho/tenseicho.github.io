@@ -1,25 +1,34 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+
+const allVideos = await getCollection("videos");
+const visibleVideos = allVideos.filter(video => !video.data.hidden);
+const sortedVideos = visibleVideos.sort((a, b) => 
+  new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+);
 const pageTitle = "Videos";
 ---
 <Layout pageTitle={pageTitle}>
     <h2 class="center">Videos</h2>
-    <div class="coming-soon">
-        <p>Coming Soon!</p>
-    </div>
+    <ul role="list" class="link-card-grid">
+        {sortedVideos.map((video) => (
+            <Card 
+                url={`/videos/${video.slug}/`} 
+                image={video.data.image.url} 
+                title={video.data.title} 
+                body={video.data.description}
+            />
+        ))}
+    </ul>
 </Layout>
 
 <style>
-    .coming-soon {
-        text-align: center;
-        padding: 4rem 1rem;
-        font-size: 1.2rem;
-    }
-    .coming-soon a {
-        color: var(--text-link);
-        text-decoration: none;
-    }
-    .coming-soon a:hover {
-        text-decoration: underline;
+    .link-card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+        gap: 1rem;
+        padding: 0;
     }
 </style>

@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import MarkdownVideoLayout from '../../layouts/MarkdownVideoLayout.astro';
+
+export async function getStaticPaths() {
+    const videoEntries = await getCollection('videos');
+    return videoEntries.map(entry => ({
+        params: { slug: entry.slug }, props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<MarkdownVideoLayout frontmatter={entry.data}>
+    <Content />
+</MarkdownVideoLayout> 
