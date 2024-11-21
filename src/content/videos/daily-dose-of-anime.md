@@ -6,5 +6,5 @@ image:
     url: '/video-images/doseAnime.png'
     alt: 'Thumbnail of first video'
 youtubeLink: 'https://www.youtube.com/@DailyDoseAnimu'
-socialmediaLink: 'https://x.com/DailyDoseAnime'
+socialmediaLink: 'https://x.com/DailyDoseAnime_'
 ---
