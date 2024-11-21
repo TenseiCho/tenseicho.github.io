@@ -2,44 +2,83 @@
 const { postSlug } = Astro.props;
 ---
 
-<div class="like-button">
-  <button id="likeButton">👍 <span id="likeCount">0</span></button>
+<div class="reaction-buttons">
+  <button id="likeButton" class="reaction-btn">👍 <span id="likeCount">0</span></button>
+  <button id="dislikeButton" class="reaction-btn">👎 <span id="dislikeCount">0</span></button>
+  <button id="heartButton" class="reaction-btn">❤️ <span id="heartCount">0</span></button>
 </div>
 
 <script define:vars={{ postSlug }}>
-  const button = document.getElementById('likeButton');
-  const countSpan = document.getElementById('likeCount');
+  const buttons = {
+    like: document.getElementById('likeButton'),
+    dislike: document.getElementById('dislikeButton'),
+    heart: document.getElementById('heartButton')
+  };
+  
+  const counts = {
+    like: document.getElementById('likeCount'),
+    dislike: document.getElementById('dislikeCount'),
+    heart: document.getElementById('heartCount')
+  };
 
-  // Load the initial count from localStorage
-  let count = parseInt(localStorage.getItem(`likes_${postSlug}`) || '0');
-  countSpan.textContent = count.toString();
+  // Load initial counts from localStorage
+  const reactions = ['like', 'dislike', 'heart'];
+  const reactionCounts = {};
+  const userReactions = {};
 
-  // Check if the user has already liked this post
-  const hasLiked = localStorage.getItem(`liked_${postSlug}`) === 'true';
+  // Check if user has reacted at all to this post
+  const hasReactedToPost = reactions.some(reaction => 
+    localStorage.getItem(`${reaction}d_${postSlug}`) === 'true'
+  );
 
-  if (hasLiked) {
-    button.disabled = true;
-    button.classList.add('liked');
-  }
-
-  button.addEventListener('click', () => {
-    if (!hasLiked) {
-      count++;
-      countSpan.textContent = count.toString();
-      localStorage.setItem(`likes_${postSlug}`, count.toString());
-      localStorage.setItem(`liked_${postSlug}`, 'true');
-      button.disabled = true;
-      button.classList.add('liked');
+  reactions.forEach(reaction => {
+    reactionCounts[reaction] = parseInt(localStorage.getItem(`${reaction}s_${postSlug}`) || '0');
+    counts[reaction].textContent = reactionCounts[reaction].toString();
+    
+    // Check if user has already reacted
+    userReactions[reaction] = localStorage.getItem(`${reaction}d_${postSlug}`) === 'true';
+    
+    if (userReactions[reaction]) {
+      buttons[reaction].disabled = true;
+      buttons[reaction].classList.add('reacted');
+    } else if (hasReactedToPost) {
+      // If user has reacted with any reaction, disable all other buttons
+      buttons[reaction].disabled = true;
     }
+  });
+
+  // Add click handlers for each button
+  reactions.forEach(reaction => {
+    buttons[reaction].addEventListener('click', () => {
+      if (!userReactions[reaction] && !hasReactedToPost) {
+        reactionCounts[reaction]++;
+        counts[reaction].textContent = reactionCounts[reaction].toString();
+        localStorage.setItem(`${reaction}s_${postSlug}`, reactionCounts[reaction].toString());
+        localStorage.setItem(`${reaction}d_${postSlug}`, 'true');
+        buttons[reaction].disabled = true;
+        buttons[reaction].classList.add('reacted');
+        
+        // Disable other buttons
+        reactions.forEach(otherReaction => {
+          if (otherReaction !== reaction) {
+            buttons[otherReaction].disabled = true;
+          }
+        });
+      }
+    });
   });
 </script>
 
 <style>
-  .like-button {
+  .reaction-buttons {
     margin-top: 2rem;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
   }
-  button {
+
+  .reaction-btn {
     background-color: #584966;
     color: var(--text);
     border: none;
@@ -47,16 +86,33 @@ const { postSlug } = Astro.props;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
   }
-  button:hover:not(:disabled) {
+
+  .reaction-btn:hover:not(:disabled) {
     background-color: #6e5d80;
+    transform: scale(1.05);
   }
-  button:disabled {
+
+  .reaction-btn:disabled {
     cursor: not-allowed;
     opacity: 0.7;
   }
-  button.liked {
+
+  .reaction-btn.reacted {
     background-color: #78c2ad;
+  }
+
+  /* Specific colors for each reaction when clicked */
+  #likeButton.reacted {
+    background-color: #78c2ad;
+  }
+
+  #dislikeButton.reacted {
+    background-color: #ff7851;
+  }
+
+  #heartButton.reacted {
+    background-color: #ff5b77;
   }
 </style>

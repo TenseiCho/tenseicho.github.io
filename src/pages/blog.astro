@@ -1,24 +1,36 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from '../layouts/Layout.astro';
 import BlogPost from '../components/BlogPost.astro';
+
+const allPosts = await getCollection("blog");
+const visiblePosts = allPosts.filter(post => !post.data.hidden);
+const sortedPosts = visiblePosts.sort((a, b) => 
+  new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+);
 const pageTitle = "Blog";
-
-// Remove or comment out the glob and related code since there are no posts yet
-// const allPosts = await Astro.glob('../pages/posts/*.md');
-// const sortedPosts = ...
-
 ---
 <Layout pageTitle={pageTitle}>
-    <h2 class="center">Posts</h2>
-    <div class="coming-soon">
-        <p>Coming Soon!</p>
-    </div>
+    <h2 class="center">Blog Posts</h2>
+    <ul class="posts-list">
+        {sortedPosts.map((post) => (
+            <BlogPost 
+                url={`/blog/${post.slug}/`}
+                title={post.data.title}
+                pubDate={new Date(post.data.pubDate).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                })}
+                slug={post.slug}
+            />
+        ))}
+    </ul>
 </Layout>
 
 <style>
-    .coming-soon {
-        text-align: center;
-        padding: 4rem 1rem;
-        font-size: 1.2rem;
+    .posts-list {
+        list-style-type: none;
+        padding: 0;
     }
 </style>
