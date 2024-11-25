@@ -27,6 +27,6 @@ const { frontmatter } = Astro.props;
 
     <slot />
 
-    <LikeButton postSlug={frontmatter.slug} />
+    <LikeButton postSlug={frontmatter.title.replace(/['"]/g, '').toLowerCase().replace(/\s+/g, '-')} />
 
 </Layout>
