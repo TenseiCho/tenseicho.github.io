@@ -4,7 +4,9 @@ const { frontmatter } = Astro.props;
 ---
 <BaseLayout pageTitle={frontmatter.title}>
     <h2>{frontmatter.title}</h2>
-    <img src={frontmatter.image.url} alt={frontmatter.image.alt} />
+    <div class="project-image-container">
+        <img class="project-image" src={frontmatter.image.url} alt={frontmatter.image.alt} />
+    </div>
     <p>{frontmatter.description}</p>
     <ul>
         <li><strong>Platform:</strong> {frontmatter.platform}</li>
@@ -13,3 +15,16 @@ const { frontmatter } = Astro.props;
     </ul>
     <slot />
 </BaseLayout>
+
+<style>
+    .project-image-container {
+        width: 500px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    .project-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+</style>

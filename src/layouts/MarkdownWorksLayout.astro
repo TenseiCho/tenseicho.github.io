@@ -15,8 +15,25 @@ const { frontmatter } = Astro.props;
         <li><span class="badge badge--item">GITHUB</span><a class="badge__link" href={frontmatter.github} target="_blank">{frontmatter.github}</a></li>
     </ul>
     <div class="center">
-        <img class="pro-img" width="500px" height="281" src={frontmatter.worksImage1.url} alt={frontmatter.worksImage1.alt} />
-        <img class="pro-img" width="500px" height="281" src={frontmatter.worksImage2.url} alt={frontmatter.worksImage2.alt} />
+        <div class="project-image-container">
+            <img class="project-image" src={frontmatter.worksImage1.url} alt={frontmatter.worksImage1.alt} />
+        </div>
+        <div class="project-image-container">
+            <img class="project-image" src={frontmatter.worksImage2.url} alt={frontmatter.worksImage2.alt} />
+        </div>
     </div>
 </BaseLayout>
+
+<style>
+    .project-image-container {
+        width: 500px;
+        max-width: 100%;
+        margin: 1rem auto;
+    }
+    .project-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+</style>
 
