@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # posts
 /pages/posts/
+
+# ssl
+ca-certificate.crt
