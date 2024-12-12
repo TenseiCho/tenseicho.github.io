@@ -21,52 +21,90 @@ const { postSlug } = Astro.props;
     heart: document.getElementById('heartCount')
   };
 
-  // Load initial counts from localStorage
   const reactions = ['like', 'dislike', 'heart'];
-  const reactionCounts = {};
-  const userReactions = {};
+  let userReactions = [];
 
-  // Check if user has reacted at all to this post
-  const hasReactedToPost = reactions.some(reaction => 
-    localStorage.getItem(`${reaction}d_${postSlug}`) === 'true'
-  );
+  // Load initial counts from API
+  async function loadReactions() {
+    try {
+      const response = await fetch(`/api/reactions?postSlug=${encodeURIComponent(postSlug)}`);
+      const data = await response.json();
+      
+      if (data.error) {
+        console.error('Error loading reactions:', data.error);
+        return;
+      }
 
-  reactions.forEach(reaction => {
-    reactionCounts[reaction] = parseInt(localStorage.getItem(`${reaction}s_${postSlug}`) || '0');
-    counts[reaction].textContent = reactionCounts[reaction].toString();
-    
-    // Check if user has already reacted
-    userReactions[reaction] = localStorage.getItem(`${reaction}d_${postSlug}`) === 'true';
-    
-    if (userReactions[reaction]) {
-      buttons[reaction].disabled = true;
-      buttons[reaction].classList.add('reacted');
-    } else if (hasReactedToPost) {
-      // If user has reacted with any reaction, disable all other buttons
-      buttons[reaction].disabled = true;
+      // Update counts
+      reactions.forEach(reaction => {
+        counts[reaction].textContent = data.counts[reaction].toString();
+      });
+
+      // Update button states
+      userReactions = data.userReactions;
+      const hasReacted = userReactions.length > 0;
+
+      reactions.forEach(reaction => {
+        if (userReactions.includes(reaction)) {
+          buttons[reaction].disabled = true;
+          buttons[reaction].classList.add('reacted');
+        } else if (hasReacted) {
+          buttons[reaction].disabled = true;
+        }
+      });
+    } catch (error) {
+      console.error('Error loading reactions:', error);
     }
-  });
+  }
 
   // Add click handlers for each button
   reactions.forEach(reaction => {
-    buttons[reaction].addEventListener('click', () => {
-      if (!userReactions[reaction] && !hasReactedToPost) {
-        reactionCounts[reaction]++;
-        counts[reaction].textContent = reactionCounts[reaction].toString();
-        localStorage.setItem(`${reaction}s_${postSlug}`, reactionCounts[reaction].toString());
-        localStorage.setItem(`${reaction}d_${postSlug}`, 'true');
-        buttons[reaction].disabled = true;
-        buttons[reaction].classList.add('reacted');
-        
-        // Disable other buttons
-        reactions.forEach(otherReaction => {
-          if (otherReaction !== reaction) {
-            buttons[otherReaction].disabled = true;
+    buttons[reaction].addEventListener('click', async () => {
+      if (!userReactions.includes(reaction) && userReactions.length === 0) {
+        try {
+          const response = await fetch('/api/reactions', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              postSlug,
+              reactionType: reaction
+            })
+          });
+
+          const data = await response.json();
+          
+          if (data.error) {
+            console.error('Error adding reaction:', data.error);
+            return;
           }
-        });
+
+          // Update counts
+          reactions.forEach(r => {
+            counts[r].textContent = data.counts[r].toString();
+          });
+
+          // Update button states
+          buttons[reaction].disabled = true;
+          buttons[reaction].classList.add('reacted');
+          userReactions.push(reaction);
+
+          // Disable other buttons
+          reactions.forEach(otherReaction => {
+            if (otherReaction !== reaction) {
+              buttons[otherReaction].disabled = true;
+            }
+          });
+        } catch (error) {
+          console.error('Error adding reaction:', error);
+        }
       }
     });
   });
+
+  // Load initial reactions
+  loadReactions();
 </script>
 
 <style>
