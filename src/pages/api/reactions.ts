@@ -2,6 +2,9 @@ import pkg from 'pg';
 const { Pool } = pkg;
 import type { APIRoute } from 'astro';
 
+// Explicitly mark this route as server-side rendered
+export const prerender = false;
+
 // Move pool creation and table initialization into a function
 async function getPool() {
   const pool = new Pool({
