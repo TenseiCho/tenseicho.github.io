@@ -2,27 +2,33 @@ import pkg from 'pg';
 const { Pool } = pkg;
 import type { APIRoute } from 'astro';
 
-const pool = new Pool({
-  connectionString: import.meta.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
+// Move pool creation and table initialization into a function
+async function getPool() {
+  const pool = new Pool({
+    connectionString: import.meta.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false
+    }
+  });
 
-// Initialize the table if it doesn't exist
-await pool.query(`
-  CREATE TABLE IF NOT EXISTS post_reactions (
-    id SERIAL PRIMARY KEY,
-    post_slug VARCHAR(255) NOT NULL,
-    reaction_type VARCHAR(50) NOT NULL,
-    user_ip VARCHAR(50) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    UNIQUE(post_slug, reaction_type, user_ip)
-  );
-`);
+  // Initialize the table if it doesn't exist
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS post_reactions (
+      id SERIAL PRIMARY KEY,
+      post_slug VARCHAR(255) NOT NULL,
+      reaction_type VARCHAR(50) NOT NULL,
+      user_ip VARCHAR(50) NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      UNIQUE(post_slug, reaction_type, user_ip)
+    );
+  `);
+
+  return pool;
+}
 
 export const GET: APIRoute = async ({ url, clientAddress }) => {
   try {
+    const pool = await getPool();
     const postSlug = url.searchParams.get('postSlug');
     if (!postSlug) {
       return new Response(JSON.stringify({ error: 'Post slug is required' }), {
@@ -60,6 +66,8 @@ export const GET: APIRoute = async ({ url, clientAddress }) => {
       }
     });
 
+    await pool.end();
+
     return new Response(JSON.stringify({
       counts,
       userReactions: userReactions.rows.map(row => row.reaction_type)
@@ -77,6 +85,7 @@ export const GET: APIRoute = async ({ url, clientAddress }) => {
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {
   try {
+    const pool = await getPool();
     const { postSlug, reactionType } = await request.json();
 
     if (!postSlug || !reactionType) {
@@ -93,6 +102,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     );
 
     if (existingReaction.rows.length > 0) {
+      await pool.end();
       return new Response(JSON.stringify({ error: 'User has already reacted to this post' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' }
@@ -125,6 +135,8 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
         counts[row.reaction_type] = parseInt(row.count);
       }
     });
+
+    await pool.end();
 
     return new Response(JSON.stringify({ counts }), {
       headers: { 'Content-Type': 'application/json' }
