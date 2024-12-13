@@ -3,5 +3,5 @@ export default defineConfig({
   site: 'https://tenseicho.xyz/',
   base: '/',
   outDir: './dist',
-  output: 'hybrid'
+  output: 'static'
 });
